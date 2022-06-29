@@ -64,11 +64,21 @@ function edit(amount,description,category) {
   }
 
   window.addEventListener("DOMContentLoaded", (e) => {
-  Object.keys(localStorage).forEach((key) => {
-    if (key) {
-      let stringified = localStorage.getItem(key);
-      addFront(JSON.parse(stringified));
+  // Object.keys(localStorage).forEach((key) => {
+  //   if (key) {
+  //     let stringified = localStorage.getItem(key);
+  //     addFront(JSON.parse(stringified));
+  //   }
+  // });
+
+  axios.get('https://crudcrud.com/api/ebd01ed641cc4c4c85192d4956462b48/expenseTracker')
+  .then((response) => {
+    for(let i =0; i<response.data.length;i++){
+      addFront(response.data[i])
     }
-  });
+  })
+  .catch((err) => {
+    console.log(err);
+  })
 });
 
