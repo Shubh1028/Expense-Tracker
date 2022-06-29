@@ -12,15 +12,24 @@ btn.addEventListener('click',function(e) {
         category: categoryInput.value
     }
 
-    localStorage.setItem(details.description, JSON.stringify(details));
+    // localStorage.setItem(details.description, JSON.stringify(details));
+
+    axios.post('https://crudcrud.com/api/ebd01ed641cc4c4c85192d4956462b48/expenseTracker',details)
+     .then((response) => {
+      addFront(response.data)
+      console.log(response)
+     })
+     .catch((err) => {
+      console.log(err)
+     })
 
     amountInput.value="",
     descriptionInput.value="",
     categoryInput.value = ""
 
-    const decrypt = JSON.parse(localStorage.getItem(details.description));
+    // const decrypt = JSON.parse(localStorage.getItem(details.description));
 
-    addFront(decrypt);
+    // addFront(decrypt);
     
 })
 
