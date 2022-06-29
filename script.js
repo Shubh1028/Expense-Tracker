@@ -38,10 +38,9 @@ function addFront(key) {
     const front = document.getElementById('content');
 
     const liItem = `<li id=${key._id}>${key.amount} - ${key.description} - ${key.category}<button onclick=remove('${key._id}')>Delete</button>
-  <button onclick=edit('${key.amount}','${key.description}','${key.category}')>Edit</button>
+  <button onclick=edit('${key.amount}','${key.description}','${key.category}','${key._id}')>Edit</button>
   </li>`
   front.innerHTML += liItem;
-  let tem= document.getElementById(key._id);
 }
 
 function remove(key){
@@ -63,12 +62,12 @@ function removeFront(key) {
   parentNode.removeChild(childNode);
 }
 
-function edit(amount,description,category) {
+function edit(amount,description,category,user) {
    amountInput.value = amount;
    descriptionInput.value = description;
    categoryInput.value = category;
 
-   remove(description);
+   remove(user);
   }
 
   window.addEventListener("DOMContentLoaded", (e) => {
