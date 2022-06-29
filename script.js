@@ -37,16 +37,24 @@ btn.addEventListener('click',function(e) {
 function addFront(key) {
     const front = document.getElementById('content');
 
-    const liItem = `<li id=${key.description}>${key.amount} - ${key.description} - ${key.category}<button onclick=remove('${key.description}')>Delete</button>
+    const liItem = `<li id=${key._id}>${key.amount} - ${key.description} - ${key.category}<button onclick=remove('${key._id}')>Delete</button>
   <button onclick=edit('${key.amount}','${key.description}','${key.category}')>Edit</button>
   </li>`
   front.innerHTML += liItem;
-
+  let tem= document.getElementById(key._id);
 }
 
 function remove(key){
-    localStorage.removeItem(key);
-    removeFront(key);
+    // localStorage.removeItem(key);
+    // removeFront(key);
+    axios.delete(`https://crudcrud.com/api/ebd01ed641cc4c4c85192d4956462b48/expenseTracker/${key}`)
+     .then((response) => {
+      removeFront(key);
+     })
+     .catch((err) => {
+      console.log(err)
+     })
+    // removeFront(key);
 }
 
 function removeFront(key) {
