@@ -14,7 +14,7 @@ btn.addEventListener('click',function(e) {
 
     // localStorage.setItem(details.description, JSON.stringify(details));
 
-    axios.post('https://crudcrud.com/api/ebd01ed641cc4c4c85192d4956462b48/expenseTracker',details)
+    axios.post('https://crudcrud.com/api/900bbe23b3cf40288af4c79dc31bcf7e/expenseTracker',details)
      .then((response) => {
       addFront(response.data)
       console.log(response)
@@ -46,7 +46,7 @@ function addFront(key) {
 function remove(key){
     // localStorage.removeItem(key);
     // removeFront(key);
-    axios.delete(`https://crudcrud.com/api/ebd01ed641cc4c4c85192d4956462b48/expenseTracker/${key}`)
+    axios.delete(`https://crudcrud.com/api/900bbe23b3cf40288af4c79dc31bcf7e/expenseTracker/${key}`)
      .then((response) => {
       removeFront(key);
      })
@@ -78,7 +78,7 @@ function edit(amount,description,category,user) {
   //   }
   // });
 
-  axios.get('https://crudcrud.com/api/ebd01ed641cc4c4c85192d4956462b48/expenseTracker')
+  axios.get('https://crudcrud.com/api/900bbe23b3cf40288af4c79dc31bcf7e/expenseTracker')
   .then((response) => {
     for(let i =0; i<response.data.length;i++){
       addFront(response.data[i])
@@ -88,4 +88,5 @@ function edit(amount,description,category,user) {
     console.log(err);
   })
 });
+
 
